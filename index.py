@@ -2,6 +2,8 @@ import discord # discord.py 임포트
 from discord import app_commands # discord.py 에서 app_commands (슬래쉬 커멘드) 임포트
 import requests # API 사용을 위한 requests 임포트
 import random
+import os
+
 
 intents = discord.Intents.all() # 모든 인텐트 활성화
 client = discord.Client(intents=intents) # client 인스턴스 (객체) 생성 + intents 적용
@@ -157,6 +159,5 @@ async def tmi_dog(interaction: discord.Interaction):
 
     await interaction.response.send_message(translate["message"]["result"]["translatedText"]) # 마찬가지로 JSON으로 변환 후 필요한 값을 가져옴
 
-
-
-client.run("MTE5MDY0Nzk1ODIzMjg5OTc0NA.G2FhSw.zl1E-8y_mdVKP5aGFhO8EFr5YBijgZXtD11LZM")
+access_token = os.environ["BOT TOKEN"]
+client.run(access_token)
